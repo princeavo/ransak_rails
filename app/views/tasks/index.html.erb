@@ -11,21 +11,21 @@
     </div>
     <div class="form-group mx-2">
       <strong>Deadline </strong>
-      <div style=="display:flex">
+      <div style="display:flex">
         <%= form.date_field :deadline_gteq %>
         to
         <%= form.date_field :deadline_lteq %>
       </div>
     </div>
     
-    <%  status=["todo","doing","done"] %>
-    <%= form.label :status, 'Statut' %>
+    <% status = { 0 => 'todo', 1 => 'doing', 2 => 'done' } %>
+    <%= form.label :status_eq, 'Statut' %>
     <div style="display:flex">
-      <%= form.radio_button :status, nil, checked: true %>
-      <%= form.label :status, 'Non renseigné' %>
-      <% status.each do |s| %>
-        <%= form.radio_button :status, s %>
-        <%= form.label :status, s %>
+      <%= form.radio_button :status_eq, "", checked: true %>
+      <%= form.label :status_eq, 'unspecified' %>
+      <% status.each do |k, v| %>
+        <%= form.radio_button :status_eq, k %>
+        <%= form.label :status_eq, v %>
       <% end %>
     </div>
   </div>
